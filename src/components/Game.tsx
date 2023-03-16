@@ -19,7 +19,7 @@ export default function Game() {
   const handleClick = (i: number) => {
     const history = gameHistory.slice(0, stepNumber + 1);
     const currentBoard = history[history.length - 1];
-    const squares = currentBoard.slice();
+    const squares = [...currentBoard];
 
     if (calculateWinner(squares) || squares[i]) {
       return
@@ -32,8 +32,7 @@ export default function Game() {
     setStepNumber(history.length);
   }
 
-  const history = gameHistory;
-  const currentBoard = history[stepNumber];
+  const currentBoard = gameHistory[stepNumber];
   const winner = calculateWinner(currentBoard)
 
   return (
@@ -43,7 +42,7 @@ export default function Game() {
       </div>
       <div className="game-info">
         <div>{setStatus(winner, xIsNext)}</div>
-        <Moves history={history} onClick={jumpTo} />
+        <Moves history={gameHistory} onClick={jumpTo} />
       </div>
     </div>
   );
