@@ -1,6 +1,6 @@
 import Square from "./Square";
 
-export default function Board({ squares, onClick }: { squares: (string | null)[], onClick: (arg: any) => any }) {
+export default function Board({ squares, onClick }: { squares: (string | null)[], onClick: (i: number) => void }) {
 
   const renderSquare = (i: number) => {
     return (
